@@ -23,8 +23,8 @@ tags:
     description: Access to refuel bills
   - name: trip
     description: Register trips
-  - name: note
-    description: Access to ticket notes
+  - name: fine
+    description: Access to fines
   - name: reminder
     description: Access to reminders
 schemes:
@@ -495,6 +495,94 @@ paths:
         - vehiclegarage_auth:
             - 'write:trips'
             - 'read:trips'
+  '/fine/{fineId}':
+    get:
+      tags:
+        - fine
+      summary: Find fine by ID
+      description: Returns a single fine
+      operationId: getFineById
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: fineId
+          in: path
+          description: ID of fine to return
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Fine'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Vehicle not found
+      security:
+        - api_key: []
+    delete:
+      tags:
+        - fine
+      summary: Deletes a fine
+      description: ''
+      operationId: deleteFine
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: api_key
+          in: header
+          required: false
+          type: string
+        - name: fineId
+          in: path
+          description: fine id to delete
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Fine not found
+      security:
+        - vehiclegarage_auth:
+            - 'write:fines'
+            - 'read:fines'
+  '/fine/vehicle/{vehicleId}':
+    post:
+      tags:
+        - fine
+      summary: Add a fine to the vehicle
+      description: ''
+      operationId: addFineToVehicleId
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: vehicleId
+          in: path
+          description: ID of vehicle that needs to be updated
+          required: true
+          type: integer
+          format: int64
+        - name: amount
+          in: formData
+          description: The total amount of fines
+          required: true
+          type: number
+      responses:
+        '405':
+          description: Invalid input
+      security:
+        - vehiclegarage_auth:
+            - 'write:fines'
+            - 'read:fines'
   /user:
     post:
       tags:
@@ -697,6 +785,8 @@ securityDefinitions:
       'read:refuels': read your refuels
       'write:trips': modify trips in your account
       'read:trips': read your trips
+      'write:fines': modify fines in your account
+      'read:fines': read your fines
   api_key:
     type: apiKey
     name: api_key
@@ -777,7 +867,7 @@ definitions:
         description: User Status
     xml:
       name: User
-  Note:
+  Fine:
     type: object
     required:
       - vehicleId
@@ -795,7 +885,7 @@ definitions:
       description:
         type: string
     xml:
-      name: Note
+      name: Fine
   Vehicle:
     type: object
     required:
