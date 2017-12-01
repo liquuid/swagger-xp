@@ -234,7 +234,6 @@ paths:
   '/reminder/{reminderId}':
     get:
       tags:
-        - vehicle
         - reminder
       summary: Find reminder by ID
       description: Returns a single reminder
@@ -262,7 +261,6 @@ paths:
         - api_key: []
     delete:
       tags:
-        - vehicle
         - reminder
       summary: Deletes a reminder
       description: ''
@@ -294,7 +292,6 @@ paths:
     post:
       tags:
         - reminder
-        - vehicle
       summary: Add a reminder to the vehicle
       description: ''
       operationId: addReminderToVehicleId
@@ -325,7 +322,6 @@ paths:
   '/refuel/{refuelId}':
     get:
       tags:
-        - vehicle
         - refuel
       summary: Find refuel bill by ID
       description: Returns a single refuel bill
@@ -353,7 +349,6 @@ paths:
         - api_key: []
     delete:
       tags:
-        - vehicle
         - refuel
       summary: Deletes a refuel bill
       description: ''
@@ -385,7 +380,6 @@ paths:
     post:
       tags:
         - refuel
-        - vehicle
       summary: Add a refuel bill to the vehicle
       description: ''
       operationId: addRefuelToVehicleId
@@ -416,7 +410,6 @@ paths:
   '/trip/{tripId}':
     get:
       tags:
-        - vehicle
         - trip
       summary: Find trip by ID
       description: Returns a single trip log
@@ -444,7 +437,6 @@ paths:
         - api_key: []
     delete:
       tags:
-        - vehicle
         - trip
       summary: Deletes a trip log
       description: ''
@@ -476,7 +468,6 @@ paths:
     post:
       tags:
         - trip
-        - vehicle
       summary: Add a trip log to the vehicle
       description: ''
       operationId: addTripToVehicleId
