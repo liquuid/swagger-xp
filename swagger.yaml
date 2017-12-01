@@ -434,6 +434,9 @@ securityDefinitions:
 definitions:
   Reminder:
     type: object
+    required:
+      - vehicleId
+      - message
     properties:
       id:
         type: integer
@@ -448,6 +451,9 @@ definitions:
       name: Reminder
   Refuel:
     type: object
+    required:
+      - vehicleId
+      - quantity
     properties:
       id:
         type: integer
@@ -486,6 +492,10 @@ definitions:
       name: User
   Note:
     type: object
+    required:
+      - vehicleId
+      - name
+      - description
     properties:
       id:
         type: integer
@@ -504,6 +514,7 @@ definitions:
     required:
       - name
       - photoUrls
+      - vehicleType
     properties:
       id:
         type: integer
