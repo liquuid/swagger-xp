@@ -231,6 +231,97 @@ paths:
         - vehiclegarage_auth:
             - 'write:vehicles'
             - 'read:vehicles'
+  '/reminder/{reminderId}':
+    get:
+      tags:
+        - vehicle
+        - reminder
+      summary: Find reminder by ID
+      description: Returns a single reminder
+      operationId: getReminderById
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: reminderId
+          in: path
+          description: ID of reminder to return
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Reminder'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Vehicle not found
+      security:
+        - api_key: []
+    delete:
+      tags:
+        - vehicle
+        - reminder
+      summary: Deletes a reminder
+      description: ''
+      operationId: deleteReminder
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: api_key
+          in: header
+          required: false
+          type: string
+        - name: reminderId
+          in: path
+          description: reminder id to delete
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Reminder not found
+      security:
+        - vehiclegarage_auth:
+            - 'write:reminders'
+            - 'read:reminders'
+  '/reminder/vehicle/{vehicleId}':
+    post:
+      tags:
+        - reminder
+        - vehicle
+      summary: Add a reminder to the vehicle
+      description: ''
+      operationId: addReminderToVehicleId
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: vehicleId
+          in: path
+          description: ID of vehicle that needs to be updated
+          required: true
+          type: integer
+          format: int64
+        - name: message
+          in: formData
+          description: Reminder message
+          required: true
+          type: string
+      responses:
+        '405':
+          description: Invalid input
+      security:
+        - vehiclegarage_auth:
+            - 'write:reminders'
+            - 'read:reminders'
   /user:
     post:
       tags:
@@ -425,8 +516,10 @@ securityDefinitions:
     scopes:
       'write:vehicles': modify vehicles in your account
       'read:vehicles': read your vehicles
-      'write:garage': modify vehicles in your account
-      'read:garage': read your vehicles
+      'write:garage': modify garage in your account
+      'read:garage': read your garage
+      'write:reminders': modify reminders in your account
+      'read:reminders': read your reminders
   api_key:
     type: apiKey
     name: api_key
