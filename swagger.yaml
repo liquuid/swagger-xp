@@ -322,6 +322,97 @@ paths:
         - vehiclegarage_auth:
             - 'write:reminders'
             - 'read:reminders'
+  '/refuel/{refuelId}':
+    get:
+      tags:
+        - vehicle
+        - refuel
+      summary: Find refuel bill by ID
+      description: Returns a single refuel bill
+      operationId: getRefuelById
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: refuelId
+          in: path
+          description: ID of refuel to return
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Refuel'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Vehicle not found
+      security:
+        - api_key: []
+    delete:
+      tags:
+        - vehicle
+        - refuel
+      summary: Deletes a refuel bill
+      description: ''
+      operationId: deleteRefuel
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: api_key
+          in: header
+          required: false
+          type: string
+        - name: refuelId
+          in: path
+          description: refuel id to delete
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Refuel bill not found
+      security:
+        - vehiclegarage_auth:
+            - 'write:refuels'
+            - 'read:refuels'
+  '/refuel/vehicle/{vehicleId}':
+    post:
+      tags:
+        - refuel
+        - vehicle
+      summary: Add a refuel bill to the vehicle
+      description: ''
+      operationId: addRefuelToVehicleId
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/xml
+        - application/json
+      parameters:
+        - name: vehicleId
+          in: path
+          description: ID of vehicle that needs to be updated
+          required: true
+          type: integer
+          format: int64
+        - name: quantity
+          in: formData
+          description: Fuel Quantity
+          required: true
+          type: number
+      responses:
+        '405':
+          description: Invalid input
+      security:
+        - vehiclegarage_auth:
+            - 'write:refuels'
+            - 'read:refuels'
   /user:
     post:
       tags:
@@ -520,6 +611,8 @@ securityDefinitions:
       'read:garage': read your garage
       'write:reminders': modify reminders in your account
       'read:reminders': read your reminders
+      'write:refuels': modify refuels in your account
+      'read:refuels': read your refuels
   api_key:
     type: apiKey
     name: api_key
