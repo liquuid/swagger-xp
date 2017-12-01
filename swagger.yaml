@@ -21,8 +21,8 @@ tags:
     description: Access to refuel bills
   - name: refuel
     description: Access to refuel bills
-  - name: ride
-    description: Register rides
+  - name: trip
+    description: Register trips
   - name: note
     description: Access to ticket notes
   - name: reminder
