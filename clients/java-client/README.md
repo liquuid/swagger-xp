@@ -91,7 +91,7 @@ public class FineApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://wmmapi.herokuapp.com/v2*
+All URIs are relative to *http://localhost:3000/v2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -149,7 +149,7 @@ Authentication schemes defined for the API:
 
 - **Type**: OAuth
 - **Flow**: implicit
-- **Authorization URL**: http://vmmapi.herokuapp.com/oauth/dialog
+- **Authorization URL**: http://localhost:3000/oauth/dialog
 - **Scopes**: 
   - write:vehicles: modify vehicles in your account
   - read:vehicles: read your vehicles

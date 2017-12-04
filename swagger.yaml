@@ -3,20 +3,20 @@ info:
   description: This is a sample vehicle maintance manager server.
   version: 0.0.1
   title: Vehicle Maintance Manager
-  termsOfService: 'http://wmmapi.herokuapp.com/terms/'
+  termsOfService: /terms/
   contact:
     email: apiteam@vmmapi
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-host: wmmapi.herokuapp.com
+host: 'localhost:3000'
 basePath: /v2
 tags:
   - name: vehicle
     description: Everything about vehicles
     externalDocs:
       description: Find out more
-      url: 'http://wmmapi.herokuapp.com'
+      url: 'http://localhost:3000'
   - name: garage
     description: Access to refuel bills
   - name: refuel
@@ -772,7 +772,7 @@ paths:
 securityDefinitions:
   vehiclegarage_auth:
     type: oauth2
-    authorizationUrl: 'http://vmmapi.herokuapp.com/oauth/dialog'
+    authorizationUrl: 'http://localhost:3000/oauth/dialog'
     flow: implicit
     scopes:
       'write:vehicles': modify vehicles in your account

@@ -38,7 +38,7 @@ type Configuration struct {
 
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
-		BasePath:      "http://wmmapi.herokuapp.com/v2",
+		BasePath:      "http://localhost:3000/v2",
 		DefaultHeader: make(map[string]string),
 		APIKey:        make(map[string]string),
 		APIKeyPrefix:  make(map[string]string),

@@ -47,9 +47,9 @@
     /**
      * The base URL against which to resolve every API call's (relative) path.
      * @type {String}
-     * @default http://wmmapi.herokuapp.com/v2
+     * @default http://localhost:3000/v2
      */
-    this.basePath = 'http://wmmapi.herokuapp.com/v2'.replace(/\/+$/, '');
+    this.basePath = 'http://localhost:3000/v2'.replace(/\/+$/, '');
 
     /**
      * The authentication methods to be included for all API calls.

@@ -129,7 +129,7 @@ module SwaggerClient
 
     def initialize
       @scheme = 'http'
-      @host = 'wmmapi.herokuapp.com'
+      @host = 'localhost:3000'
       @base_path = '/v2'
       @api_key = {}
       @api_key_prefix = {}

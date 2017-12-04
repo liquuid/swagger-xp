@@ -1,6 +1,6 @@
 # SwaggerClient::VehicleApi
 
-All URIs are relative to *http://wmmapi.herokuapp.com/v2*
+All URIs are relative to *http://localhost:3000/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

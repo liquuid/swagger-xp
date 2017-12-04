@@ -17,7 +17,7 @@ Put the package under your project folder and add the following in import:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://wmmapi.herokuapp.com/v2*
+All URIs are relative to *http://localhost:3000/v2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -75,7 +75,7 @@ Class | Method | HTTP request | Description
 
 - **Type**: OAuth
 - **Flow**: implicit
-- **Authorization URL**: http://vmmapi.herokuapp.com/oauth/dialog
+- **Authorization URL**: http://localhost:3000/oauth/dialog
 - **Scopes**: 
  - **write:vehicles**: modify vehicles in your account
  - **read:vehicles**: read your vehicles

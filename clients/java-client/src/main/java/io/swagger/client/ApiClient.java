@@ -112,7 +112,7 @@ public class ApiClient {
      */
     public static final String LENIENT_DATETIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
 
-    private String basePath = "http://wmmapi.herokuapp.com/v2";
+    private String basePath = "http://localhost:3000/v2";
     private boolean lenientOnJson = false;
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
@@ -181,7 +181,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g http://wmmapi.herokuapp.com/v2
+     * @param basePath Base path of the URL (e.g http://localhost:3000/v2
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {
