@@ -1,0 +1,7 @@
+{
+	"packageName" : "api",
+	"customCode" :  "e := json.NewEncoder(w)"
+
+		
+}
+
