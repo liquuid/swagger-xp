@@ -5,7 +5,7 @@ info:
   title: Vehicle Maintance Manager
   termsOfService: /terms/
   contact:
-    email: apiteam@vmmapi
+    email: apiteam@vmmapi.co
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
@@ -40,6 +40,8 @@ paths:
         - application/xml
         - application/json
       responses:
+        '200':
+          description: "Get all vehicles"
         '405':
           description: Invalid input
       security:
