@@ -428,9 +428,9 @@ And then the last major section is the rest api, within the rest api there is th
 To build the binary and then run it:
 
     go install ./cmd/todo-list-server/
-    todo-list-server
+    todo-list-server --port 8080
 
-
+Now a complete API documentation is available in: http://localhost:8080/docs
 
 
 
